@@ -1,0 +1,536 @@
+/* =========================================================
+   Atran App - Shared Stylesheet (Raw CSS, no framework)
+   ========================================================= */
+
+:root {
+    --color-primary: #0B132B;
+    /* Midnight Navy */
+    --color-secondary: #1C2541;
+    /* Deep Navy */
+    --color-accent: #C9A227;
+    /* Premium Gold */
+    --color-accent-dark: #A8871F;
+    /* Premium Gold, hover shade */
+    --color-accent-light: rgba(201, 162, 39, 0.15);
+    --color-danger: #b3261e;
+    --color-danger-light: #fbe9e7;
+    --color-success: #1e7d3c;
+    --color-success-light: #e7f6ec;
+    --color-text: #111827;
+    /* Deep Charcoal */
+    --color-text-muted: #6b7280;
+    --color-border: #e2e5eb;
+    --color-bg: #F5F7FA;
+    /* Soft Gray */
+    --color-surface: #ffffff;
+    --sidebar-width: 240px;
+    --header-height: 64px;
+    --radius: 8px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Dana", Tahoma, Arial, sans-serif;
+    direction: rtl;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Dana", Tahoma, Arial, sans-serif;
+}
+
+body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* ============ App Shell ============ */
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ============ Sidebar ============ */
+
+.sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px 20px 20px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 10px;
+}
+
+.sidebar-brand-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.sidebar-brand span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 2px;
+}
+
+.sidebar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 11px 20px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    border-right: 3px solid transparent;
+}
+
+.sidebar-nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+}
+
+.sidebar-nav li a.active {
+    background-color: var(--color-secondary);
+    border-right-color: var(--color-accent);
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.sidebar-nav li.disabled a {
+    color: rgba(255, 255, 255, 0.35);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============ Main Column ============ */
+
+.main-column {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.app-header {
+    height: var(--header-height);
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.app-header h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.app-content {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+/* ============ Cards ============ */
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ============ Buttons ============ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-dark);
+}
+
+.btn-secondary {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-bg);
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+/* ============ Alerts / Flash Messages ============ */
+
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+    border-color: rgba(30, 125, 60, 0.25);
+}
+
+.alert-danger {
+    background-color: var(--color-danger-light);
+    color: var(--color-danger);
+    border-color: rgba(179, 38, 30, 0.25);
+}
+
+/* ============ Forms ============ */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 14px;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.form-error {
+    color: var(--color-danger);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ============ Tables ============ */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table.data-table th,
+table.data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: right;
+}
+
+table.data-table thead th {
+    background-color: var(--color-bg);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+table.data-table tbody tr:hover {
+    background-color: var(--color-bg);
+}
+
+.table-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.table-actions form {
+    display: inline;
+}
+
+/* ============ Empty State ============ */
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--color-text-muted);
+}
+
+/* ============ Pagination ============ */
+
+.pagination-wrapper {
+    margin-top: 16px;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html,
+body {
+    font-family: "Dana", Tahoma, Arial, sans-serif;
+    direction: rtl;
+}
+
+body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Dana", Tahoma, Arial, sans-serif;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+h5,
+h6 {
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-control {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    font-family: "Dana", Tahoma, Arial, sans-serif;
+}
+
+.sidebar-brand {
+    font-weight: 650;
+}
+
+.sidebar-nav li a {
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.sidebar-nav li a.active {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+    font-family: "Dana", Tahoma, Arial, sans-serif;
+}
+
+.app-header h1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+    font-family: inherit;
+}
+
+table.data-table {
+    font-size: 14px;
+}
+
+table.data-table th {
+    font-weight: 700;
+}
+
+table.data-table td {
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+}
