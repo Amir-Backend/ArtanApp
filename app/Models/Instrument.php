@@ -8,25 +8,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Teacher extends Model
+class Instrument extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'phone',
-        'national_code',
-        'percentage',
-        'features',
-    ];
-
-    protected $casts = [
-        'percentage' => 'decimal:2',
+        'name',
+        'description',
+        'status',
     ];
 
     /**
-     * رکوردهای مهارت استاد (هر رکورد یعنی این استاد فلان ساز را در چه سطحی تدریس می‌کند).
+     * تمام رکوردهای مهارت (ارتباط استاد با این ساز).
      */
     public function teacherSkills(): HasMany
     {
@@ -34,11 +27,11 @@ class Teacher extends Model
     }
 
     /**
-     * سازهایی که این استاد تدریس می‌کند.
+     * اساتیدی که این ساز را تدریس می‌کنند.
      */
-    public function instruments(): BelongsToMany
+    public function teachers(): BelongsToMany
     {
-        return $this->belongsToMany(Instrument::class, 'teacher_skills')
+        return $this->belongsToMany(Teacher::class, 'teacher_skills')
             ->withPivot(['course_id', 'level'])
             ->withTimestamps();
     }

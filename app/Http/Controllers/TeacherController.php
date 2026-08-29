@@ -44,6 +44,8 @@ class TeacherController extends Controller
     {
         $this->authorize('view', $teacher);
 
+        $teacher->load('teacherSkills.instrument');
+
         return view('teachers.show', compact('teacher'));
     }
 

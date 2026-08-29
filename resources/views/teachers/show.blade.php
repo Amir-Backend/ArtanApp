@@ -52,4 +52,67 @@
 
     </div>
 
+    <div class="card" style="max-width: 640px; margin-top: 20px;">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h2 style="margin: 0;">سازهای قابل تدریس</h2>
+
+            <a href="{{ route('teacher-skills.create', ['teacher_id' => $teacher->id]) }}" class="btn btn-primary btn-sm">
+                + افزودن ساز
+            </a>
+        </div>
+
+        @if ($teacher->teacherSkills->count())
+
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ساز</th>
+                            <th>سطح</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach ($teacher->teacherSkills as $skill)
+                            <tr>
+                                <td>{{ $skill->instrument->name }}</td>
+                                <td>{{ $skill->level ?? '—' }}</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <a href="{{ route('teacher-skills.edit', $skill) }}" class="btn btn-secondary btn-sm">
+                                            ویرایش
+                                        </a>
+
+                                        <form
+                                            action="{{ route('teacher-skills.destroy', $skill) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('آیا از حذف این ساز از لیست استاد مطمئن هستید؟');"
+                                        >
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                حذف
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+        @else
+
+            <div class="empty-state">
+                هنوز سازی برای این استاد ثبت نشده است.
+            </div>
+
+        @endif
+
+    </div>
+
 @endsection

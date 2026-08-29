@@ -39,6 +39,18 @@
                         اساتید
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('instruments.index') }}"
+                       class="{{ request()->routeIs('instruments.*') ? 'active' : '' }}">
+                        سازها
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('teacher-skills.index') }}"
+                       class="{{ request()->routeIs('teacher-skills.*') ? 'active' : '' }}">
+                        مهارت اساتید
+                    </a>
+                </li>
                 <li class="disabled">
                     <a href="#">دوره‌ها</a>
                 </li>
